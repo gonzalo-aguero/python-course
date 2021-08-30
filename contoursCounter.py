@@ -1,9 +1,9 @@
 import cv2
 import numpy as np
-valorGauss = 9
-valorKernel = 1
+valorGauss = 13
+valorKernel = 7
 
-image = cv2.imread('monedas.jpg')
+image = cv2.imread('monedas2.jpg')
 grayImage = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 gaussImage = cv2.GaussianBlur(grayImage, (valorGauss, valorGauss), 0) # Remove image noise
 bordersImage = cv2.Canny(gaussImage, 60, 100) # Remove image noise final
