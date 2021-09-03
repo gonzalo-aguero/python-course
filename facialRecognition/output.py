@@ -7,15 +7,16 @@ trainingModel = cv.face.EigenFaceRecognizer_create()
 trainingModel.read('training_EigenFaceRecognizer.xml')
 noises = cv.CascadeClassifier('/home/gonzalo90fa/Desktop/Development projects/Curso Python 1/facialRecognition/opencv/data/haarcascades/haarcascade_frontalface_default.xml')
 # camera = cv.VideoCapture(0)
-camera = cv.VideoCapture('videoauron.mp4')
-# camera = cv.VideoCapture('ElonMusk.mp4')
+# camera = cv.VideoCapture('auron.jpg')
+camera = cv.VideoCapture('ElonMusk.mp4')
 color = (150,0,200)
 while True:
     response,capture = camera.read()
+    # response, capture = True, cv.imread('auron.jpg')
     if response == False: break
     grays = cv.cvtColor(capture, cv.COLOR_BGR2GRAY)
     captureId = grays.copy()
-    face = noises.detectMultiScale(grays, 1.3, 5)
+    face = noises.detectMultiScale(grays, 1.9, 1)
     
     #Make a rectangle in each detected face.
     for(x, y, v1, v2) in face:

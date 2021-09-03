@@ -1,15 +1,15 @@
 import cv2 as cv
 import os
 
-model = 'Gonzalo'
+model = 'Elon Musk'
 path1 = './data'
 fullpath = path1 + '/' + model
 if not os.path.exists(fullpath):
     os.makedirs(fullpath)
 
 # Elements that are not faces
-noises = cv.CascadeClassifier('/home/gonzalo90fa/Desktop/Development projects/Curso Python 1/facialRecognition/opencv/data/haarcascades/haarcascade_frontalface_default.xml')
-camera = cv.VideoCapture(0)
+noises = cv.CascadeClassifier('/home/gonzalo90fa/Desktop/Development projects/Curso Python 1/facialRecognition/haarcascade_frontalface_default.xml')
+camera = cv.VideoCapture('ElonMusk.mp4')
 color = (150,0,200)
 
 imageId = 1
@@ -19,7 +19,7 @@ while True:
 
     grays = cv.cvtColor(capture, cv.COLOR_BGR2GRAY)#Conver image to grays scale
     captureId = capture.copy()
-    face = noises.detectMultiScale(grays, 1.3, 10)#Detect faces
+    face = noises.detectMultiScale(grays, 1.3, 15)#Detect faces
 
     #Make a rectangle in each detected face.
     for(x, y, v1, v2) in face:
@@ -37,7 +37,7 @@ while True:
     # Conditions to end scan
     if cv.waitKey(1) == ord('q'):
         break
-    if imageId == 500:
+    if imageId > 500:
         break
 
 camera.release()
